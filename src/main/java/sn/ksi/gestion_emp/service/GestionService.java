@@ -28,7 +28,7 @@ public class GestionService {
     }
 
     public void virerSalaire(Employe emp, PaiementService paiementService){
-        paiementService.virerSalaire(emp);
+        paiementService.virerSalaire(emp, salaire);
     }
 
     public void saveEtat(Employe emp, Etat etat) {

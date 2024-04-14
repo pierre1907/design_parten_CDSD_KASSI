@@ -13,8 +13,12 @@ import java.util.Scanner;
 @SpringBootApplication
 public class GestionEmpApplication {
     public static void main(String[] args) {
-        // Création d'une instance de GestionService
-        GestionService gestionService = new GestionService();
+        EtatService etatService = new EtatService();
+        PaiementService paiementService = new VirementBService();
+
+        // Création de GestionService en passant les instances requises
+        GestionService gestionService = new GestionService(etatService, paiementService);
+
 
         // Création d'un scanner pour la saisie utilisateur
         Scanner scanner = new Scanner(System.in);
@@ -35,25 +39,29 @@ public class GestionEmpApplication {
             switch (choix) {
                 case 1:
                     // Enregistrer un Service
-                    Service service = new Service();
+                    Service service = new Service(1, "IT", "Informatique");
                     gestionService.saveService(service);
                     System.out.println("Service enregistré avec succès.");
                     break;
                 case 2:
                     // Enregistrer un Employé
-                    Employe employe = new Employe();
+                    Employe employe = new Employe(1, "MAT001");
                     gestionService.saveEmploye(employe);
                     System.out.println("Employé enregistré avec succès.");
                     break;
                 case 3:
-                    // Virer Salaire
-                    PaiementService paiementService = new VirementBService();
+                    // Obtenir l'employé (remplacez les valeurs par celles correspondant à l'employé concerné)
+                    Employe employe1 = new Employe(1, "MAT001");
+                    double salaire = Double.parseDouble(employe1.getMatricule());
+
+                    // Virer Salaire avec le montant du salaire
+                    paiementService.virerSalaire(employe1, salaire);
                     System.out.println("Salaire viré avec succès.");
                     break;
                 case 4:
                     // Enregistrer un congé pour un Employé
-                    Employe employeConge = new Employe();
-                    EtatService congeService = new EtatService();
+                    Employe employeConge = new Employe(1, "MAT001", Etat.CONGE);
+                    etatService.saveEtat(employeConge, Etat.CONGE);
                     System.out.println("Congé enregistré avec succès.");
                     break;
                 case 5:
