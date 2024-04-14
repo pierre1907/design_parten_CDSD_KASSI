@@ -35,31 +35,28 @@ public class GestionEmpApplication {
             switch (choix) {
                 case 1:
                     // Enregistrer un Service
-                    Service service = new Service(); // Créez un nouvel objet Service ici
+                    Service service = new Service();
                     gestionService.saveService(service);
                     System.out.println("Service enregistré avec succès.");
                     break;
                 case 2:
                     // Enregistrer un Employé
-                    Employe employe = new Employe(); // Créez un nouvel objet Employe ici
+                    Employe employe = new Employe();
                     gestionService.saveEmploye(employe);
                     System.out.println("Employé enregistré avec succès.");
                     break;
                 case 3:
                     // Virer Salaire
-                    PaiementService paiementService = new VirementBService(); // Créez une instance de votre service de paiement
-                    // Appelez la méthode virerSalaire avec les paramètres appropriés
+                    PaiementService paiementService = new VirementBService();
                     System.out.println("Salaire viré avec succès.");
                     break;
                 case 4:
                     // Enregistrer un congé pour un Employé
-                    Employe employeConge = new Employe(); // Créez un nouvel objet Employe ici
-                    EtatService congeService = new EtatService(); // Créez une instance de CongeService
-                    // Appelez la méthode pour enregistrer le congé avec les paramètres appropriés
+                    Employe employeConge = new Employe();
+                    EtatService congeService = new EtatService();
                     System.out.println("Congé enregistré avec succès.");
                     break;
                 case 5:
-                    // Quitter le programme
                     System.out.println("Programme terminé.");
                     return;
                 default:
